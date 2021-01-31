@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>exo_flask_signaux</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href={{url_for("static", filename="css/style.css")}}>
+</head>
+<body>
+    <h1>Reconnaissance d'images</h1>
+    <img src={{url_for('static', filename='img/fondPanneaux2.jpg')}}>
+    <p>Voici une petite application flask, qui permet de reconnaitre les panneaux de signalisation.</p>
+    <form action="{{ url_for('predict2')}}" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Choisissez un panneau</legend>
+            <label for="panneau">Télechargez l'image</label>
+            <input type="file" id="panneau" name="panneau">
+        </fieldset>
+        <button type="submit">Prédiction</button>
+    </form>
+    <em>{{ zone_prediction }}</em>
+
+    <p>Pour cette prédiction, j'ai utilisé un réseau de neurones à convolution.</p>
+    <p>Mon modèle à été entrainé sur un jeu de données contenant 7095 images eu format ppm.</p>
+    <p>Chaque panneau est classé par catégorie dans un dossier.</p>
+
+    <h2>Pré-traitement des images</h2>
+    <p>Chargement des images labélisées dans des array numpy</p>
+    <img src={{url_for('static', filename='img/fonctChargPann.png')}}>
+    <p>Chargement des données</p>
+    <img src={{url_for('static', filename='img/chargPanneaux.png')}}>
+    <p>Découpage des données train, en train/val</p>
+    <img src={{url_for('static', filename='img/trainValPann.png')}}>
+    <p>Normalisation des données</p>
+    <img src={{url_for('static', filename='img/normPann.png')}}>
+
+    <h2>Modèle utilisé</h2>
+    <img src={{url_for('static', filename='img/modelePann.png')}}>
+    <p>compilation du modèle</p>
+    <img src={{url_for('static', filename='img/compilPann.png')}}>
+    <p>Définition des callbacks</p>
+    <img src={{url_for('static', filename='img/tensorPann.png')}}>
+    <p>Entrainement</p>
+    <img src={{url_for('static', filename='img/fitPanneau.png')}}>
+    <p>Test de la précision du modèle</p>
+    <img src={{url_for('static', filename='img/preciPann.png')}}>
+
+
+</body>
